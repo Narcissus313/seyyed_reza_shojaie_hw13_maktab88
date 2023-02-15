@@ -9,10 +9,8 @@ const websiteParts = [
 	{ url: "contact", message: "Contact Route" },
 ];
 
-let requestedPart;
 app.use((req, res, next) => {
-	requestedPart = req.url.trim().split("/")[1];
-	// console.log("requestedPart: ", requestedPart);
+	let requestedPart = req.url.trim().split("/")[1];
 	const targetPart = websiteParts.find((part) => part.url === requestedPart);
 	if (targetPart) {
 		res.send(targetPart.message);
