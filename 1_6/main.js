@@ -1,15 +1,16 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-let paths = [];
-  
-for (let i = 1; i <= 5; i++) {
-	const filePath = path.join(__dirname, "/pages/page-" + i + ".html");
-	paths.push(filePath);
-	app.get("/page-" + i, (_req, res) => {
-		res.sendFile(paths[i - 1]);
-	});
-}
+
+app.use((req, res) => {
+	const url = req.url;
+	const fileNumber = Number(url.split("-")[1]);
+	if (fileNumber >= 1 && fileNumber <= 5) {
+		res.sendFile(path.join(__dirname, `/pages/page-${fileNumber}.html`));
+		return;
+	}
+	res.send("page not found");
+});
 
 app.listen(80, (err) => {
 	if (err) console.log("err=> ", err);
