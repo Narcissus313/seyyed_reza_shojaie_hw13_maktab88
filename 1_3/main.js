@@ -12,7 +12,7 @@ const readUsersData = async (dataFile) => {
 	}
 };
 (async () => {
-	const users = await readUsersData("./user-data.json");
+	const users = await readUsersData("../user-data.json");
 	const admins = users.filter((user) => user.role === "admin");
 
 	app.get("/get-all-users", (_req, res) => {

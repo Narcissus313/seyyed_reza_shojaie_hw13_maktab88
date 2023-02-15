@@ -6,7 +6,7 @@ app.use((req, res) => {
 	const url = req.url;
 	const fileNumber = Number(url.split("-")[1]);
 	if (fileNumber >= 1 && fileNumber <= 5) {
-		res.sendFile(path.join(__dirname, `/pages/page-${fileNumber}.html`));
+		res.sendFile(path.join(__dirname, `../pages/page-${fileNumber}.html`));
 		return;
 	}
 	res.send("page not found");

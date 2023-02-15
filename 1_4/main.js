@@ -3,7 +3,7 @@ const path = require("path");
 const app = express();
 
 app.get("/picture", (_req, res) => {
-	const imagePath = path.join(__dirname, "village.jpg");
+	const imagePath = path.join(__dirname, "../village.jpg");
 	res.sendFile(imagePath);
 });
 app.get("/home", (_req, res) => {
